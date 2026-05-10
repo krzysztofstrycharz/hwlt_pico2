@@ -1,24 +1,2 @@
 # Build outputs
-build/
-*.uf2
-*.dis
-*.elf
-*.hex
-*.bin
-*.o
-*.d
-*.lst
-
-# CMake files
-CMakeFiles/
-CMakeCache.txt
-cmake_install.cmake
-Makefile
-install_manifest.txt
-
-# VS Code
-.vscode/
-
-# Temporary files
-*.swp
-*~
+build/*
