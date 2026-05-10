@@ -1,0 +1,33 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Pico 2 Debug (RP2350)",
+            "type": "cortex-debug",
+            "request": "launch",
+            "servertype": "openocd",
+            "executable": "${workspaceFolder}/build/blink_simple.elf",
+            "device": "rp2350",
+            
+            // NAPRAWA BŁĘDÓW NM / OBJDUMP
+            "gdbPath": "gdb-multiarch",
+            "nmPath": "nm",
+            "objdumpPath": "objdump",
+
+            // Ścieżki do OpenOCD (sprawdź czy folder openocd-0.12.0 jest poprawny!)
+            "searchDir": ["/opt/pico-tools/openocd/openocd-0.12.0/scripts/"],
+            "configFiles": [
+                "interface/cmsis-dap.cfg",
+                "target/rp2350.cfg"
+            ],
+
+            // Niestandardowy parametr, który dodatek ZAWSZE respektuje
+            "openOCDLaunchCommands": [
+                "adapter speed 5000"
+            ],
+
+            "runToEntryPoint": "main",
+            "internalConsoleOptions": "openOnSessionStart"
+        }
+    ]
+}
