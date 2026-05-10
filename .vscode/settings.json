@@ -1,0 +1,6 @@
+{
+    "cmake.configureSettings": {
+        "PICO_SDK_PATH": "${workspaceFolder}/pico-sdk",
+        "PICO_BOARD": "pico2"
+    }
+}
