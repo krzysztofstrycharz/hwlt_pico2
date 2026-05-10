@@ -18,7 +18,7 @@ pico_sdk_init()
 # rest of your project
 
 add_executable(hwlt_pico2
-        hwlt_pico2.c
+        src/hwlt_pico2.c
 )
 
 # pull in common dependencies
