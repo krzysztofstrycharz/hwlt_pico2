@@ -6,7 +6,7 @@
             "type": "cortex-debug",
             "request": "launch",
             "servertype": "openocd",
-            "executable": "${workspaceFolder}/build/blink_simple.elf",
+            "executable": "${workspaceFolder}/build/hwlt_pico2.elf",
             "device": "rp2350",
             
             // NAPRAWA BŁĘDÓW NM / OBJDUMP

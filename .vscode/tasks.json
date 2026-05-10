@@ -8,7 +8,7 @@
             "args": [
                 "load",
                 "-f",
-                "${workspaceFolder}/build/blink_simple.elf"
+                "${workspaceFolder}/build/hwlt_pico2.elf"
             ],
             "group": {
                 "kind": "build",

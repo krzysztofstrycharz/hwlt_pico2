@@ -11,12 +11,12 @@ pico_sdk_init()
 
 # rest of your project
 
-add_executable(blink_simple
-        blink_simple.c
+add_executable(hwlt_pico2
+        hwlt_pico2.c
 )
 
 # pull in common dependencies
-target_link_libraries(blink_simple pico_stdlib)
+target_link_libraries(hwlt_pico2 pico_stdlib)
 
 # create map/bin/hex/uf2 file etc.
-pico_add_extra_outputs(blink_simple)
+pico_add_extra_outputs(hwlt_pico2)
