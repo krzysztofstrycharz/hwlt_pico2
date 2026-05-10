@@ -1,2 +1,5 @@
 # Build outputs
 build/*
+
+# Visual Studio Code files
+.vscode/*
