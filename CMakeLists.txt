@@ -1,7 +1,9 @@
 cmake_minimum_required(VERSION 3.13)
 
 # set pico-sdk path
-set(PICO_SDK_PATH ${CMAKE_CURRENT_SOURCE_DIR}/pico-sdk)
+if (NOT PICO_SDK_PATH)
+    set(PICO_SDK_PATH ${CMAKE_CURRENT_SOURCE_DIR}/pico-sdk)
+endif()
 
 # set mcu
 set(PICO_BOARD pico2)
@@ -16,7 +18,6 @@ project(hwlt_pico2 C CXX ASM)
 pico_sdk_init()
 
 # rest of your project
-
 add_executable(hwlt_pico2
         src/hwlt_pico2.c
 )
