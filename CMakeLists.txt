@@ -1,8 +1,12 @@
 cmake_minimum_required(VERSION 3.13)
 
 # set pico-sdk path
-if (NOT PICO_SDK_PATH)
-    set(PICO_SDK_PATH ${CMAKE_CURRENT_SOURCE_DIR}/pico-sdk)
+if (NOT DEFINED PICO_SDK_PATH)
+    if (DEFINED ENV{PICO_SDK_PATH})
+        set(PICO_SDK_PATH $ENV{PICO_SDK_PATH})
+    else()
+        set(PICO_SDK_PATH ${CMAKE_CURRENT_SOURCE_DIR}/pico-sdk)
+    endif()
 endif()
 
 # set mcu
@@ -20,6 +24,7 @@ pico_sdk_init()
 # rest of your project
 add_executable(hwlt_pico2
         src/hwlt_pico2.c
+        src/common/SPSCFrame.hpp
 )
 
 # pull in common dependencies
@@ -27,3 +32,6 @@ target_link_libraries(hwlt_pico2 pico_stdlib)
 
 # create map/bin/hex/uf2 file etc.
 pico_add_extra_outputs(hwlt_pico2)
+
+# include directories with headers
+target_include_directories(hwlt_pico2 PRIVATE ${PICO_SDK_PATH}/src/common/pico_sync/include/)
