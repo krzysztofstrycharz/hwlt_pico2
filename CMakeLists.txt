@@ -1,8 +1,12 @@
 cmake_minimum_required(VERSION 3.13)
 
 # set pico-sdk path
-if (NOT PICO_SDK_PATH)
-    set(PICO_SDK_PATH ${CMAKE_CURRENT_SOURCE_DIR}/pico-sdk)
+if (NOT DEFINED PICO_SDK_PATH)
+    if (DEFINED ENV{PICO_SDK_PATH})
+        set(PICO_SDK_PATH $ENV{PICO_SDK_PATH})
+    else()
+        set(PICO_SDK_PATH ${CMAKE_CURRENT_SOURCE_DIR}/pico-sdk)
+    endif()
 endif()
 
 # set mcu

@@ -37,5 +37,5 @@ jobs:
       run: |
         mkdir build
         cd build
-        cmake .. -DPICO_PLATFORM=pico2
+        cmake ..
         make -j$(nproc)
