@@ -1,0 +1,41 @@
+name: Pull Request Build Check
+
+# This workflow runs whenever a Pull Request is opened or updated against the 'main' branch
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    name: Compile Firmware
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Checkout your repository code
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    # 2. Install the ARM toolchain and build tools
+    - name: Install Toolchain
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y cmake gcc-arm-none-eabi libnewlib-arm-none-eabi build-essential python3
+
+    # 3. Manually fetch the Pico SDK (version 2.2.0 adds RP2350 support)
+    - name: Setup Raspberry Pi Pico SDK
+      env:
+        PICO_SDK_VERSION: 2.2.0
+      run: |
+        cd $HOME
+        git clone --depth 1 --branch $PICO_SDK_VERSION https://github.com/raspberrypi/pico-sdk.git
+        cd pico-sdk
+        git submodule update --init
+        echo "PICO_SDK_PATH=$HOME/pico-sdk" >> $GITHUB_ENV
+
+    # 4. Configure CMake and build
+    - name: Build HWLT Firmware
+      run: |
+        mkdir build
+        cd build
+        cmake ..
+        make -j$(nproc)
